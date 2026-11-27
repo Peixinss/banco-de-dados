@@ -1,0 +1,23 @@
+CREATE DATABASE IF NOT EXISTS quiz;
+USE quiz;
+
+CREATE TABLE categorias (
+    id_categoria INT AUTO_INCREMENT PRIMARY KEY,
+    descricao VARCHAR(60) NOT NULL
+);
+
+CREATE TABLE perguntas (
+    id_pergunta INT AUTO_INCREMENT PRIMARY KEY,
+    pergunta VARCHAR(255) NOT NULL,
+    alternativa_a VARCHAR(150) NOT NULL,
+    alternativa_b VARCHAR(150) NOT NULL,
+    alternativa_c VARCHAR(150) NOT NULL,
+    resposta_correta CHAR(1) NOT NULL,
+    id_categoria INT NOT NULL,
+    FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria)
+);
+
+-- Dados de teste para o Quiz
+INSERT INTO categorias (descricao) VALUES ('Geral');
+INSERT INTO perguntas (pergunta, alternativa_a, alternativa_b, alternativa_c, resposta_correta, id_categoria) 
+VALUES ('Quanto é 2 + 2?', '3', '4', '5', 'B', 1);
